@@ -12,16 +12,5 @@ namespace E3series.Simplify.Entities
         }
 
         #endregion
-        
-        #region IDisposable Members
-
-        // ReSharper disable once RedundantOverridenMember
-        public override void Dispose()
-        {
-            //TODO: Future - need to dispose all child objects
-            base.Dispose();
-        }
-
-        #endregion
     }
 }
