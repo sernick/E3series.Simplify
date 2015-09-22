@@ -7,37 +7,22 @@ using E3series.Simplify.Extensions;
 
 namespace E3series.Simplify.Entities.Base
 {
-    public abstract class ComObjectBase<TE3ComObjectType> : IComObject
+    public abstract class ComObjectBase: IComObject
     {
        #region Private Fields
 
         private readonly IComObject _parent;
-        private readonly List<IComObject> _children;
-
-        #endregion
-        
-        #region Public Fields
-
-        public TE3ComObjectType ComObject { get; private set; }
+        private readonly IList<IComObject> _children;
 
         #endregion
 
         #region Constructor
 
-        protected ComObjectBase(IComObject parent, Func<TE3ComObjectType> createAction)
+        protected ComObjectBase(IComObject parent)
         {
             _parent = parent;
-            _children = new List<IComObject>();
-
-            try
-            {
-                ComObject = createAction.Invoke();
-            }
-            catch
-            {
-                ComObject = default(TE3ComObjectType);
-            }
-
+            _children = new IComObject[] { };
+            
             if (_parent != null)
                 _parent.RegisterChild(this);
         }
@@ -64,12 +49,6 @@ namespace E3series.Simplify.Entities.Base
         {
             if (_parent != null)
                 _parent.UnregisterChild(this); 
-
-            if (ComObject != null)
-            {
-                Marshal.ReleaseComObject(ComObject);
-                ComObject = default(TE3ComObjectType);
-            }
 
             _children.Where(o => o != null).ForEach(o => o.Dispose());
             _children.Clear();

@@ -46,9 +46,8 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Entities\Base\ComObjectBase.cs" />
     <Compile Include="Entities\Base\Interfaces\IComObject.cs" />
+    <Compile Include="Entities\Base\Interfaces\IComObjectProvider.cs" />
     <Compile Include="Entities\E3Application.cs" />
-    <Compile Include="Entities\E3Device.cs" />
-    <Compile Include="Entities\E3Job.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Helpers\Connector.cs" />
     <Compile Include="Helpers\Dispatcher.cs" />
@@ -70,7 +69,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
       <Private>True</Private>
     </COMReference>
   </ItemGroup>
