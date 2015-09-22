@@ -54,6 +54,8 @@
     <Compile Include="Helpers\Dispatcher.cs" />
     <Compile Include="Helpers\Native\WinApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="Views\Interfaces\IView.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="e3">
