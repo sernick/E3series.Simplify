@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using E3series.Simplify.Entities.Base.Interfaces;
 using E3series.Simplify.Extensions;
 
 namespace E3series.Simplify.Entities.Base

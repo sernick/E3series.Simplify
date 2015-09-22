@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace E3series.Simplify.Entities.Base
+namespace E3series.Simplify.Entities.Base.Interfaces
 {
     public interface IComObject : IDisposable
     {

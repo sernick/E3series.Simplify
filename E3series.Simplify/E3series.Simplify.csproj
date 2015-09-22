@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Entities\Base\ComObjectBase.cs" />
-    <Compile Include="Entities\Base\IComObject.cs" />
+    <Compile Include="Entities\Base\Interfaces\IComObject.cs" />
     <Compile Include="Entities\E3Application.cs" />
     <Compile Include="Entities\E3Device.cs" />
     <Compile Include="Entities\E3Job.cs" />
