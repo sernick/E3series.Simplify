@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using e3;
 using E3series.Simplify.Helpers.Native;
+using E3series.Simplify.ViewModels;
 
 namespace E3series.Simplify.Helpers
 {
@@ -30,7 +31,32 @@ namespace E3series.Simplify.Helpers
                 case 1:
                     return Connect(processList[0].Id);
                 default:
-                    throw new NotImplementedException();
+                    IntPtr hWnd = WinApi.GetForegroundWindow();
+                    int curPid;
+                    WinApi.GetWindowThreadProcessId(hWnd, out curPid);
+
+                    if (Process.GetProcessById(curPid).ProcessName == Assembly.GetEntryAssembly().GetName().Name)
+                    {
+                        IntPtr targetHwnd =
+                            WinApi.GetWindow(Process.GetCurrentProcess().MainWindowHandle,
+                                (uint)WinApi.GetWindowCmd.GW_HWNDNEXT);
+                        while (true)
+                        {
+                            IntPtr temp = WinApi.GetParent(targetHwnd);
+                            if (temp.Equals(IntPtr.Zero)) break;
+                            targetHwnd = temp;
+                        }
+                        WinApi.GetWindowThreadProcessId(targetHwnd, out curPid);
+                    }
+
+                    if (Process.GetProcessById(curPid).ProcessName == Identifier)
+                        return Connect(Process.GetProcessById(curPid).Id);
+
+                    var vm = new SelectionViewModel();
+
+                    return vm.ShowDialog() == true
+                        ? vm.SelectedE3Application
+                        : null;
             }
         }
 

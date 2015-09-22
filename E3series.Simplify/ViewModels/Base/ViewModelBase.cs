@@ -3,8 +3,7 @@ using E3series.Simplify.Views.Interfaces;
 
 namespace E3series.Simplify.ViewModels.Base
 {
-    class ViewModelBase<TViewType> : INotifyPropertyChanged
-    where TViewType : IView
+    internal class ViewModelBase<TViewType> : INotifyPropertyChanged where TViewType : IView
     {
         #region INotifyPropertyChanged Members
 
@@ -17,7 +16,7 @@ namespace E3series.Simplify.ViewModels.Base
         private readonly TViewType _view;
 
         #endregion
-        
+
         #region Public Fields
 
         public TViewType View
@@ -26,7 +25,7 @@ namespace E3series.Simplify.ViewModels.Base
         }
 
         #endregion
-        
+
         #region Constructor
 
         public ViewModelBase(TViewType view)
