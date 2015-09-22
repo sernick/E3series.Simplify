@@ -12,19 +12,34 @@ namespace E3series.Simplify.Entities.Base
        #region Private Fields
 
         private readonly IComObject _parent;
-        private readonly IList<IComObject> _children;
+        private readonly List<IComObject> _children;
 
         #endregion
 
+        #region Internal Fields
+
+        internal object Object { get; private set; }
+
+        #endregion
+        
         #region Constructor
 
-        protected ComObjectBase(IComObject parent)
+        protected ComObjectBase(IComObject parent, Func<object> createAction)
         {
             _parent = parent;
-            _children = new IComObject[] { };
+            _children = new List<IComObject>();
             
             if (_parent != null)
                 _parent.RegisterChild(this);
+
+            try
+            {
+                Object = createAction.Invoke();
+            }
+            catch
+            {
+                Object = null;
+            }
         }
 
         #endregion
@@ -52,6 +67,12 @@ namespace E3series.Simplify.Entities.Base
 
             _children.Where(o => o != null).ForEach(o => o.Dispose());
             _children.Clear();
+
+            if (Object != null)
+            {
+                Marshal.ReleaseComObject(Object);
+                Object = null;
+            }
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
