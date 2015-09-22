@@ -32,17 +32,5 @@ namespace E3series.Simplify.Entities
         }
 
         #endregion
-        
-        #region IDisposable Members
-
-        public override void Dispose()
-        {
-            if (_job != null)
-                _job.Dispose();
-
-            base.Dispose();
-        }
-
-        #endregion
     }
 }
