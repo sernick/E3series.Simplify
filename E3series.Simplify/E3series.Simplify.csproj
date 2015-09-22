@@ -51,6 +51,8 @@
     <Compile Include="Entities\E3Job.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Helpers\Connector.cs" />
+    <Compile Include="Helpers\Dispatcher.cs" />
+    <Compile Include="Helpers\Native\WinApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
