@@ -7,7 +7,7 @@ namespace E3series.Simplify.Entities
     {
         #region Constructor
 
-        public E3Job(E3Application app) : base(app, () => app.ComObject.CreateJobObject())
+        public E3Job(E3Application app) : base(app, () => (IJobInterface) app.ComObject.CreateJobObject())
         {
         }
 

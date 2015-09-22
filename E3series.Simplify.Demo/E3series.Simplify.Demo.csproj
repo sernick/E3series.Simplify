@@ -77,6 +77,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Behaviors\MarginSetter.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Models\Messages\RequestCloseMessage.cs" />
     <Compile Include="Services\Interfaces\IViewService.cs" />
@@ -112,7 +113,24 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\E3series.Simplify\E3series.Simplify.csproj">
+      <Project>{8DD6161F-02D8-4A19-BA7F-ADBCF9B7B31C}</Project>
+      <Name>E3series.Simplify</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="e3">
+      <Guid>{59B53E00-679B-41ED-9D11-766E27B6A7A4}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>41</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
